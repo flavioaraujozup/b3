@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="none" />
+    <meta
+      name="robots"
+      content="noindex, nofollow, noarchive, nocache, nositelinkssearchbox, nosnippet"
+    />
+    <meta
+      name="googlebot"
+      content="noindex, nofollow, noarchive, nocache, nositelinkssearchbox, nosnippet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Bella API - Documentação</title>
+    <!-- Embed elements Elements via Web Component -->
+    <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@stoplight/elements/styles.min.css"
+    />
+    <style>
+      #update {
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="update">
+      Este documento foi atualizado em: <span id="dateUpdated"></span>.
+    </p>
+    <elements-api
+      apiDescriptionUrl="movement-v2.yaml"
+      router="hash"
+      layout="sidebar"
+    />
+  </body>
+  <script>
+
+    const xhReq = new XMLHttpRequest();
+    xhReq.open("HEAD", "movement-v2.yaml", false);
+    xhReq.send(null);
+
+    if (xhReq.status === 200) {
+      const lastModified = xhReq.getResponseHeader("Last-Modified");
+      const date = new Date(lastModified);
+      updateDateElement(formatDate(date));
+    }
+
+    function formatDate(date){
+      const formatedDate = date.toLocaleDateString().concat(" às ").concat(date.toLocaleTimeString());
+      return formatedDate;
+    }
+
+    function updateDateElement(date){
+      document.getElementById("dateUpdated").innerHTML = date;
+    }
+
+  </script>
+</html>
