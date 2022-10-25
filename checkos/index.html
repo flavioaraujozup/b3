@@ -1,0 +1,48 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="none" />
+    <meta
+      name="robots"
+      content="noindex, nofollow, noarchive, nocache, nositelinkssearchbox, nosnippet"
+    />
+    <meta
+      name="googlebot"
+      content="noindex, nofollow, noarchive, nocache, nositelinkssearchbox, nosnippet"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Check OS</title>
+    <style>
+      #update {
+        width: 100%;
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="update">
+      Este documento foi atualizado em: <span id="dateUpdated"></span>.
+    </p>
+  </body>
+  <script>
+
+checkVersion = function () {
+    var agent = window.navigator.userAgent,
+    start = agent.indexOf( ‘OS ‘ );
+    if( ( agent.indexOf( ‘iPhone’ ) > -1 || agent.indexOf( ‘iPad’ ) > -1 ) && start > -1 ){
+        //return window.Number( agent.substr( start + 3, 3 ).replace( ‘_’, ’.’ ) );
+      alert(window.Number( agent.substr( start + 3, 3 ).replace( ‘_’, ’.’ ) ))
+    }
+    return 0;
+}
+
+  </script>
+</html>
