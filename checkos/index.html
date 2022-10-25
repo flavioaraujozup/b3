@@ -34,15 +34,13 @@
   </body>
   <script>
 
-checkVersion = function () {
+
     var agent = window.navigator.userAgent,
     start = agent.indexOf( ‘OS ‘ );
     if( ( agent.indexOf( ‘iPhone’ ) > -1 || agent.indexOf( ‘iPad’ ) > -1 ) && start > -1 ){
-        //return window.Number( agent.substr( start + 3, 3 ).replace( ‘_’, ’.’ ) );
-      alert(window.Number( agent.substr( start + 3, 3 ).replace( ‘_’, ’.’ ) ))
+        let i = return window.Number( agent.substr( start + 3, 3 ).replace( ‘_’, ’.’ ) );
+      alert(i)
     }
-    return 0;
-}
 
   </script>
 </html>
