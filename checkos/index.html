@@ -33,14 +33,36 @@
     </p>
   </body>
   <script>
-
-
-    var agent = window.navigator.userAgent,
-    start = agent.indexOf( ‘OS ‘ );
-    if( ( agent.indexOf( ‘iPhone’ ) > -1 || agent.indexOf( ‘iPad’ ) > -1 ) && start > -1 ){
-        let i = window.Number( agent.substr( start + 3, 3 ).replace( ‘_’, ’.’ ) );
-      alert(i)
-    }
+/* 
+  [ Detect iOS Version ]
+  supports iOS 2.0 or latter
+  call iOSversion() function will get:
+    status: boolean;  -- get iOS version: true, none: false
+    version: int; -- ex 11
+    info: string; -- ex IOS 11.2.6 
+*/
+function iOSversion() {
+  let d, v;
+  if (/iP(hone|od|ad)/.test(navigator.platform)) {
+    v = (navigator.appVersion).match(/OS (\d+)_(\d+)_?(\d+)?/);
+    d = {
+      status: true,
+      version: parseInt(v[1], 10) , 
+      info: parseInt(v[1], 10)+'.'+parseInt(v[2], 10)+'.'+parseInt(v[3] || 0, 10)
+    };
+  }else{
+    d = {status:false, version: false, info:''}
+  }
+  return d;
+}
+    
+let iosVer = iOSversion();
+if (iosVer.status) {
+  alert('iOS : '+iosVer.info+', version : '+iosVer.version);
+  //ex. IOS 11.2.6, version 11
+}else{
+  console.log('not iPhone or iPad');
+}    
 
   </script>
 </html>
